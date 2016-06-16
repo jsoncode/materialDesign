@@ -13,12 +13,20 @@
 [materialDesign] {
     letter-spacing: .8px;
     cursor: pointer;
-    -webkit-user-select: none;
-    user-select: none;
     position: relative;
     overflow: hidden;
     outline: 0 !important;
     z-index: 1;
+}
+
+button[materialDesign],
+input[type="button"][materialDesign] {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+[materialDesign] * {
+    pointer-events: none;
 }
 
 .animate-hand {
@@ -35,32 +43,40 @@
     z-index: 0;
 }
 
-.animate-hand.animate{
-    animation-duration:0.5s;
-    transform: scale(0.5);
-    animation-timing-function:linear;
+.animate-hand.animate {
+    animation-duration: 0.5s;
+    /* transform: scale(0.5); */
+    animation-timing-function: linear;
 }
-/*.animate-hand.animate.ripple_1{
-    animation-name:ripple_1;
+
+.animate-hand.animate.ripple_1 {
+    animation-name: ripple_1;
 }
-.animate-hand.animate.ripple_2{
-    animation-name:ripple_2;
+
+.animate-hand.animate.ripple_2 {
+    animation-name: ripple_2;
 }
-.animate-hand.animate.ripple_3{
-    animation-name:ripple_3;
+
+.animate-hand.animate.ripple_3 {
+    animation-name: ripple_3;
 }
-.animate-hand.animate.ripple_4{
-    animation-name:ripple_4;
+
+.animate-hand.animate.ripple_4 {
+    animation-name: ripple_4;
 }
-.animate-hand.animate.ripple_5{
-    animation-name:ripple_5;
+
+.animate-hand.animate.ripple_5 {
+    animation-name: ripple_5;
 }
-.animate-hand.animate.ripple_6{
-    animation-name:ripple_6;
-} */
+
+.animate-hand.animate.ripple_6 {
+    animation-name: ripple_6;
+}
+
 @keyframes ripple_1 {
     100% {
         opacity: 0;
+        display: none;
         transform: scale(3);
     }
 }
@@ -68,49 +84,69 @@
 @keyframes ripple_2 {
     100% {
         opacity: 0;
-        transform: scale(4);
+        display: none;
+        transform: scale(5);
     }
 }
 
 @keyframes ripple_3 {
     100% {
         opacity: 0;
-        transform: scale(5);
+        display: none;
+        transform: scale(6);
     }
 }
 
 @keyframes ripple_4 {
     100% {
         opacity: 0;
-        transform: scale(6);
+        display: none;
+        transform: scale(8);
     }
 }
+
 @keyframes ripple_5 {
     100% {
         opacity: 0;
-        transform: scale(7);
+        display: none;
+        transform: scale(11);
     }
 }
+
 @keyframes ripple_6 {
     100% {
         opacity: 0;
-        transform: scale(10);
+        display: none;
+        transform: scale(15);
     }
 }
 
 
 /* 改写bootstrap样式，实现 materialDesign基本效果*/
 
+html {
+    line-height: 1.5;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+body {
+    font-weight: 400;
+    font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .navbar {
     border-radius: 0;
     padding: 0;
 }
+
 .navbar-nav .nav-item+.nav-item,
-.navbar-nav .nav-link+.nav-link{
+.navbar-nav .nav-link+.nav-link {
     margin: 0;
 }
+
 .navbar .navbar-brand,
-.navbar-nav .nav-link{
+.navbar-nav .nav-link {
     height: 50px;
     line-height: 50px;
     padding: 0 15px;
@@ -119,17 +155,63 @@
 
 .btn {
     border-radius: 2px;
-    border: 0;
     font-size: 14px;
     padding-top: 0;
     padding-bottom: 0;
-    height: 36px;
     line-height: 36px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+}
+
+.btn.btn-sm {
+    font-size: 12px;
+    line-height: 26px;
 }
 
 .btn.btn-lg {
     font-size: 18px;
     height: 50px;
     line-height: 50px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    -webkit-font-smoothing: antialiased;
+}
+
+code,
+kbd,
+pre,
+samp {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.text-muted {
+    color: #bfbfbf;
+}
+
+.media-object {
+    width: 100px;
+}
+
+.media-body p:last-child{
+    margin-bottom: 0;
+}
+
+.close{
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border-radius: 2px;
+    opacity:0.3;
+}
+.pager li>a, .pager li>span{
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 34px;
+    border-radius:18px;
 }
