@@ -25,8 +25,10 @@
         tag.insertBefore(div, tag.firstElementChild);
 
         var scale = Math.round(tag.offsetWidth / 100) || 1;
-        var left = e.layerX;
-        var top = e.layerY;
+        
+        //         fixed touchstart position
+        var left = e.type==='click' ? e.layerX : (e.touches[0].clientX - tag.offsetLeft);
+        var top = e.type==='click' ? e.layerY : (e.touches[0].clientY - tag.offsetTop);
 
         div.style.left = left + "px";
         div.style.top = top + "px";
