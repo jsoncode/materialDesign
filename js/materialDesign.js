@@ -26,10 +26,27 @@
 
         var scale = Math.round(tag.offsetWidth / 100) || 1;
         
-        //         fixed touchstart position
+        // 优化移动端获取不到精确位置问题
         var left = e.type==='click' ? e.layerX : (e.touches[0].clientX - tag.offsetLeft);
         var top = e.type==='click' ? e.layerY : (e.touches[0].clientY - tag.offsetTop);
 
+        //优化移动端固定元素的位置获取
+        if (e.type !== 'click') {
+            deepCheckFixed(tag);
+        }
+
+        function deepCheckFixed(tag) {
+            var parent = tag.parentElement;
+            if (parent.tagName !== 'BODY') {
+                if (getComputedStyle(parent, null).getPropertyValue('position') === 'fixed') {
+                    left = e.touches[0].clientX - tag.offsetLeft - parent.offsetLeft;
+                    top = e.touches[0].clientY - parent.offsetTop;
+                } else {
+                    deepCheckFixed(parent);
+                }
+            }
+        }
+        
         div.style.left = left + "px";
         div.style.top = top + "px";
         scale = scale > 6 ? 6 : scale;
